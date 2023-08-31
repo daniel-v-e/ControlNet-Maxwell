@@ -1,5 +1,6 @@
 # daniel-v-e
 *.h5
+nohup*
 
 .idea/
 

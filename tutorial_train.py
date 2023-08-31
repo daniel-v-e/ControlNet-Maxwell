@@ -26,7 +26,7 @@ model.only_mid_control = only_mid_control
 checkpoint_callback = ModelCheckpoint(
     dirpath             = "models/checkpoints",
     filename            = "{epoch:02d}-{step}",
-    every_n_train_steps = 3125,
+    every_n_train_steps = 625,
 )
 
 # Misc
@@ -34,7 +34,6 @@ dataset    = MyDataset()
 dataloader = DataLoader(dataset, num_workers=8, batch_size=batch_size, shuffle=True)
 logger     = ImageLogger(batch_frequency=logger_freq)
 trainer    = pl.Trainer(gpus=1, precision=32, callbacks=[logger, checkpoint_callback])
-trainer    = pl.Trainer(gpus=1, precision=32, callbacks=[logger])
 
 # Train!
 trainer.fit(model, dataloader)
